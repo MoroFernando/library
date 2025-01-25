@@ -1,3 +1,7 @@
+import { BookPagesNumberInvalid } from '../errors/BookPagesNumberInvalid.error'
+import { BookTitleInvalidError } from '../errors/BookTitleInvalid.error'
+import { BookTitleRequiredError } from '../errors/BookTitleRequired.error'
+
 type BookProps = {
   id: string
   title: string
@@ -5,29 +9,33 @@ type BookProps = {
 }
 
 export class Book {
-  private constructor(private props: BookProps) {
+  private constructor(private readonly props: BookProps) {
     this.validate()
   }
 
   public static create(props: Omit<BookProps, 'id'>) {
     return new Book({
-      id: crypto.randomUUID(),
+      id: crypto.randomUUID().toString(),
       title: props.title,
       pagesNumber: props.pagesNumber,
     })
   }
 
+  public static with(props: BookProps) {
+    return new Book(props)
+  }
+
   private validate() {
     if (!this.props.title) {
-      throw new Error('Book title is Required!')
+      throw new BookTitleRequiredError()
     }
 
     if (this.props.title.length <= 3) {
-      throw new Error('Book title must be at least 3 charaters long')
+      throw new BookTitleInvalidError()
     }
 
     if (this.props.pagesNumber && this.props.pagesNumber < 0) {
-      throw new Error('Book pages number must be positive')
+      throw new BookPagesNumberInvalid()
     }
   }
 
