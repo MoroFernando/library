@@ -5,4 +5,10 @@ GET http://localhost:3000/
 GET http://localhost:3000/books
 
 ###
-GET http://localhost:3000/test/foo?name=ferrrr
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "It! A coisa",
+  "pagesNumber": 375
+}
