@@ -3,15 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/app.ts",
-  "type": "module",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only src/app.ts",
+    "dev": "ts-node-dev src/index.ts --transpile-only",
     "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.10",
     "@typescript-eslint/eslint-plugin": "^8.21.0",

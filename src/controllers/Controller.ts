@@ -7,8 +7,8 @@ export type IRequest = {
 }
 
 export type IResponse = {
-  statusCode?: number
-  body?: any
+  statusCode: number
+  body: any
 }
 
 export interface IController {
