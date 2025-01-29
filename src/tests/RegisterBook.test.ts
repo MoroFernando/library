@@ -1,6 +1,6 @@
-import { RegisterBookController } from '../controllers/RegisterBook.controller'
-import { BookInMemomryRepository } from '../repositories/BookInMemory.repository'
-import { RegisterBookUseCase } from '../usecases/RegisterBook.usecase'
+import { RegisterBookUseCase } from '../application/use-cases/RegisterBook.usecase'
+import { BookInMemomryRepository } from '../infrastructure/repositories/BookInMemory.repository'
+import { RegisterBookController } from '../interfaces/controllers/RegisterBook.controller'
 
 test('Deve registrar um novo livro no catálogo', async () => {
   const repo = new BookInMemomryRepository()

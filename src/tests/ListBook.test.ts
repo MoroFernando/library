@@ -1,6 +1,6 @@
-import { ListBooksController } from '../controllers/ListBooks.controller'
-import { BookInMemomryRepository } from '../repositories/BookInMemory.repository'
-import { ListBooksUseCase } from '../usecases/ListBooks.usecase'
+import { ListBooksUseCase } from '../application/use-cases/ListBooks.usecase'
+import { BookInMemomryRepository } from '../infrastructure/repositories/BookInMemory.repository'
+import { ListBooksController } from '../interfaces/controllers/ListBooks.controller'
 
 test('Deve retornar a lista de livros do catálogo', async () => {
   const repo = new BookInMemomryRepository()

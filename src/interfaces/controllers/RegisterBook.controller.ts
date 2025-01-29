@@ -1,7 +1,6 @@
-import { RegisterBookUseCase } from '../usecases/RegisterBook.usecase'
+import { RegisterBookUseCase } from '../../application/use-cases/RegisterBook.usecase'
 import { IController, IResponse, IRequest } from './Controller'
-
-import { handleError } from './ErrorHandler'
+import { handleError } from '../../errors/ErrorHandler'
 
 export class RegisterBookController implements IController {
   private readonly registerBookUseCase: RegisterBookUseCase

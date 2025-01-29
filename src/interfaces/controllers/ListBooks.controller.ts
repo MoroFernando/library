@@ -1,6 +1,6 @@
+import { ListBooksUseCase } from '../../application/use-cases/ListBooks.usecase'
 import { IController, IResponse } from './Controller'
-import { ListBooksUseCase } from '../usecases/ListBooks.usecase'
-import { handleError } from './ErrorHandler'
+import { handleError } from '../../errors/ErrorHandler'
 
 export class ListBooksController implements IController {
   private readonly listBookuseCase: ListBooksUseCase

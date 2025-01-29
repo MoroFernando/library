@@ -1,5 +1,5 @@
 import { Book as PrismaBook } from '@prisma/client'
-import { Book } from '../entities/Book.entity'
+import { Book } from '../domain/entities/Book.entity'
 import { IBookRepository } from './Book.repository'
 import { prisma } from '../infra/database/prisma/client'
 

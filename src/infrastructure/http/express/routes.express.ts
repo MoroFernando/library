@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { ListBooksController } from '../../controllers/ListBooks.controller'
-import { ListBooksUseCase } from '../../usecases/ListBooks.usecase'
 import { expressAdapter } from './adapter.express'
 import { BookPrismaRepository } from '../../repositories/BookPrisma.repository'
-import { RegisterBookUseCase } from '../../usecases/RegisterBook.usecase'
-import { RegisterBookController } from '../../controllers/RegisterBook.controller'
+import { RegisterBookUseCase } from '../../../application/use-cases/RegisterBook.usecase'
+import { ListBooksUseCase } from '../../../application/use-cases/ListBooks.usecase'
+import { RegisterBookController } from '../../../interfaces/controllers/RegisterBook.controller'
+import { ListBooksController } from '../../../interfaces/controllers/ListBooks.controller'
 
 export const routes = Router()
 

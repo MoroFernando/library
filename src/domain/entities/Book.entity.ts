@@ -1,6 +1,6 @@
-import { BookPagesNumberInvalid } from '../errors/BookPagesNumberInvalid.error'
-import { BookTitleInvalidError } from '../errors/BookTitleInvalid.error'
-import { BookTitleRequiredError } from '../errors/BookTitleRequired.error'
+import { BookPagesNumberInvalid } from '../../errors/BookPagesNumberInvalid.error'
+import { BookTitleInvalidError } from '../../errors/BookTitleInvalid.error'
+import { BookTitleRequiredError } from '../../errors/BookTitleRequired.error'
 import { Entity } from './Entity'
 
 type BookProps = {

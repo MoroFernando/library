@@ -1,5 +1,5 @@
-import { Book } from '../entities/Book.entity'
-import { IBookRepository } from '../repositories/Book.repository'
+import { Book } from '../../domain/entities/Book.entity'
+import { IBookRepository } from '../../domain/repositories/Book.repository'
 import { IUseCase } from './UseCase'
 
 type Input = {

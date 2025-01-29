@@ -1,3 +1,3 @@
-import { runAPI } from './infra/express/server.express'
+import { runAPI } from './infrastructure/http/express/server.express'
 
 runAPI()
