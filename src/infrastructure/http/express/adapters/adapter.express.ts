@@ -3,7 +3,7 @@ import {
   IController,
   IRequest,
   IResponse,
-} from '../../../interfaces/controllers/Controller'
+} from '../../../../interfaces/controllers/Controller'
 
 export function expressAdapter(controller: IController) {
   return async (req: Request, res: Response) => {

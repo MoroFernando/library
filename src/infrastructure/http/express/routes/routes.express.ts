@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { expressAdapter } from './../adapter.express'
+import { expressAdapter } from './../adapters/adapter.express'
 import { BookPrismaRepository } from '../../../repositories/BookPrisma.repository'
 import { RegisterBookUseCase } from '../../../../application/use-cases/RegisterBook.usecase'
 import { ListBooksUseCase } from '../../../../application/use-cases/ListBooks.usecase'
