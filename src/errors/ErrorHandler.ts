@@ -11,6 +11,15 @@ export function handleError(error: unknown): IResponse {
     }
   }
 
+  if (error instanceof Error) {
+    return {
+      statusCode: 400,
+      data: {
+        message: error.message,
+      },
+    }
+  }
+
   return {
     statusCode: 500,
     data: {

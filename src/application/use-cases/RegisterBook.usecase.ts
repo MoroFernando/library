@@ -1,6 +1,7 @@
 import { Book } from '../../domain/entities/Book.entity'
 import { IBookRepository } from '../../domain/repositories/Book.repository'
 import { Category } from '../../domain/value-objects/Category.vo'
+import { BookMapper } from '../../interfaces/mappers/Book.mapper'
 import { IBookDTO } from '../dtos/Book.dto'
 import { IUseCase } from './UseCase'
 
@@ -30,14 +31,8 @@ export class RegisterBookUseCase implements IUseCase<Input, IBookDTO> {
       pagesNumber: pagesNumber,
     })
 
-    console.log(book.category)
     await this.bookRepository.add(book)
 
-    return {
-      id: book.id,
-      title: book.title,
-      category: book.category?.name || null,
-      pagesNumber: book.pagesNumber || null,
-    }
+    return new BookMapper().toDTO(book)
   }
 }

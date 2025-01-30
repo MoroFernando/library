@@ -1,5 +1,5 @@
 import express from 'express'
-import { routes } from './routes.express'
+import { routes } from './routes/routes.express'
 
 export function runAPI() {
   const api = express()

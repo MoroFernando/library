@@ -1,4 +1,5 @@
 import { IBookRepository } from '../../domain/repositories/Book.repository'
+import { BookMapper } from '../../interfaces/mappers/Book.mapper'
 import { IBookDTO } from '../dtos/Book.dto'
 import { IUseCase } from './UseCase'
 
@@ -12,11 +13,6 @@ export class ListBooksUseCase implements IUseCase<void, IBookDTO[]> {
   async execute(): Promise<IBookDTO[]> {
     const books = await this.bookRepository.getAll()
 
-    return books.map((book) => ({
-      id: book.id,
-      title: book.title,
-      category: book.category?.name || null,
-      pagesNumber: book.pagesNumber || null,
-    }))
+    return new BookMapper().toDTOs(books)
   }
 }
