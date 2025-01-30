@@ -9,6 +9,7 @@ POST http://localhost:3000/books
 Content-Type: application/json
 
 {
-  "title": "It! A coisa",
-  "pagesNumber": 375
+  "title": "A incendiária",
+  "category": "Terror",
+  "pagesNumber": 422
 }

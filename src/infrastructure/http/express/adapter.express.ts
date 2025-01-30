@@ -7,14 +7,16 @@ import {
 
 export function expressAdapter(controller: IController) {
   return async (req: Request, res: Response) => {
-    const httpReq: IRequest = {
-      body: req.body,
-      params: req.params,
-      query: req.query as Record<string, string>,
+    const applicationRequest: IRequest = {
+      ...req.body,
+      ...req.params,
+      ...req.query,
     }
 
-    const httpRes: IResponse = await controller.handle(httpReq)
+    // params: req.params,
+    // query: req.query as Record<string, string>,
+    const httpRes: IResponse = await controller.handle(applicationRequest)
 
-    res.status(httpRes.statusCode).json(httpRes.body)
+    res.status(httpRes.statusCode).json(httpRes.data)
   }
 }

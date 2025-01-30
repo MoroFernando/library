@@ -5,7 +5,7 @@ export function handleError(error: unknown): IResponse {
   if (error instanceof ApplicationError) {
     return {
       statusCode: error.statusCode,
-      body: {
+      data: {
         message: error.message,
       },
     }
@@ -13,7 +13,7 @@ export function handleError(error: unknown): IResponse {
 
   return {
     statusCode: 500,
-    body: {
+    data: {
       message: 'Internal Server Error',
     },
   }

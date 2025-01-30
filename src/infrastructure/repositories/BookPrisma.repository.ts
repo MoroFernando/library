@@ -1,18 +1,20 @@
 import { Book as PrismaBook } from '@prisma/client'
-import { Book } from '../domain/entities/Book.entity'
-import { IBookRepository } from './Book.repository'
-import { prisma } from '../infra/database/prisma/client'
+import { Book } from '../../domain/entities/Book.entity'
+import { prisma } from '../database/prisma/client'
+import { IBookRepository } from '../../domain/repositories/Book.repository'
+import { Category } from '../../domain/value-objects/Category.vo'
 
 export class BookPrismaRepository implements IBookRepository {
   private readonly prisma = prisma
 
   async getAll() {
-    const result = await this.prisma.book.findMany()
+    const prismaResult = await this.prisma.book.findMany()
 
-    const books = result.map((i) =>
+    const books = prismaResult.map((i) =>
       Book.with({
         id: i.id,
         title: i.title,
+        category: i.category ? Category.with({ name: i.category }) : undefined,
         pagesNumber: i.pagesNumber ?? undefined,
       }),
     )
@@ -24,6 +26,7 @@ export class BookPrismaRepository implements IBookRepository {
     const data: PrismaBook = {
       id: book.id,
       title: book.title,
+      category: book.category?.name ?? null,
       pagesNumber: book.pagesNumber ?? null,
     }
 

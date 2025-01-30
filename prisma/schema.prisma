@@ -14,8 +14,9 @@ datasource db {
 }
 
 model Book {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
+  category    String?
   pagesNumber Int?
 
   @@map("books")

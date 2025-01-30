@@ -1,19 +1,25 @@
 import { BookPagesNumberInvalid } from '../../errors/BookPagesNumberInvalid.error'
 import { BookTitleInvalidError } from '../../errors/BookTitleInvalid.error'
 import { BookTitleRequiredError } from '../../errors/BookTitleRequired.error'
-import { Entity } from './Entity'
+import { Category } from '../value-objects/Category.vo'
 
 type BookProps = {
   id: string
   title: string
+  category?: Category
   pagesNumber?: number
 }
 
-export class Book extends Entity<BookProps> {
+export class Book {
+  private constructor(private props: BookProps) {
+    this.validate()
+  }
+
   static create(props: Omit<BookProps, 'id'>) {
     return new Book({
       id: crypto.randomUUID().toString(),
       title: props.title,
+      category: props.category,
       pagesNumber: props.pagesNumber,
     })
   }
@@ -42,6 +48,10 @@ export class Book extends Entity<BookProps> {
 
   get title() {
     return this.props.title
+  }
+
+  get category() {
+    return this.props.category
   }
 
   get pagesNumber() {

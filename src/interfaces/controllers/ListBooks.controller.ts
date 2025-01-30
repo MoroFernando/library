@@ -1,5 +1,5 @@
 import { ListBooksUseCase } from '../../application/use-cases/ListBooks.usecase'
-import { IController, IResponse } from './Controller'
+import { IController, IRequest, IResponse } from './Controller'
 import { handleError } from '../../errors/ErrorHandler'
 
 export class ListBooksController implements IController {
@@ -9,13 +9,14 @@ export class ListBooksController implements IController {
     this.listBookuseCase = listBookuseCase
   }
 
-  async handle(): Promise<IResponse> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async handle(request: IRequest): Promise<IResponse> {
     try {
       const output = await this.listBookuseCase.execute()
 
       return {
         statusCode: 200,
-        body: output,
+        data: output,
       }
     } catch (error) {
       return handleError(error)

@@ -1,14 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export type IRequest = {
-  body?: any
-  params?: Record<string, string>
-  query?: Record<string, string>
-}
+export type IRequest = Record<string, any>
 
 export type IResponse = {
   statusCode: number
-  body: any
+  data: any
 }
 
 export interface IController {

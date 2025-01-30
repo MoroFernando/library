@@ -9,17 +9,19 @@ export class RegisterBookController implements IController {
     this.registerBookUseCase = registerBookUseCase
   }
 
-  async handle(req: IRequest): Promise<IResponse> {
+  async handle(request: IRequest): Promise<IResponse> {
     try {
-      const { title } = req.body
+      const { title, category, pagesNumber } = request
 
       const output = await this.registerBookUseCase.execute({
         title: title,
+        category: category,
+        pagesNumber: pagesNumber,
       })
 
       return {
         statusCode: 201,
-        body: output,
+        data: output,
       }
     } catch (error) {
       return handleError(error)

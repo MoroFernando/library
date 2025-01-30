@@ -1,5 +1,5 @@
-import { Book } from '../domain/entities/Book.entity'
-import { IBookRepository } from './Book.repository'
+import { Book } from '../../domain/entities/Book.entity'
+import { IBookRepository } from '../../domain/repositories/Book.repository'
 
 export class BookInMemomryRepository implements IBookRepository {
   private readonly books: Book[] = []
