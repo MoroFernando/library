@@ -1,11 +1,11 @@
 import express from 'express'
-import { routes } from './routes/routes.express'
+import { router } from './routes/routes.express'
 
 export function runAPI() {
   const api = express()
 
   api.use(express.json())
-  api.use(routes)
+  api.use(router)
 
   const PORT = process.env.PORT || 3000
   api.listen(PORT, () => {
