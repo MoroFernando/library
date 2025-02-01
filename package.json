@@ -2,9 +2,9 @@
   "name": "catalogo",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.ts",
+  "main": "src/main.ts",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts --transpile-only",
+    "dev": "ts-node-dev src/main.ts --transpile-only",
     "test": "jest"
   },
   "keywords": [],
