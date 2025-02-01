@@ -17,13 +17,16 @@ type Input = {
 export class RegisterBookUseCase implements IUseCase<Input, IBookDTO> {
   private readonly bookRepository: IBookRepository
   private readonly authorRepository: IAuthorRepository
+  private readonly bookMapper: BookMapper
 
   constructor(
     bookRepository: IBookRepository,
     authorRepository: IAuthorRepository,
+    bookMapper: BookMapper,
   ) {
     this.bookRepository = bookRepository
     this.authorRepository = authorRepository
+    this.bookMapper = bookMapper
   }
 
   async execute(input: Input): Promise<IBookDTO> {
@@ -45,6 +48,6 @@ export class RegisterBookUseCase implements IUseCase<Input, IBookDTO> {
 
     await this.bookRepository.add(book)
 
-    return new BookMapper().toDTO(book)
+    return await this.bookMapper.toDTO(book)
   }
 }

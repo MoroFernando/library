@@ -10,10 +10,11 @@ type Input = {
 
 export class RegisterAuthorUseCase implements IUseCase<Input, IAuthorDTO> {
   private readonly authorRepository: IAuthorRepository
+  private readonly authorMapper: AuthorMapper
 
-  constructor(authorRepository: IAuthorRepository) {
+  constructor(authorRepository: IAuthorRepository, authorMapper: AuthorMapper) {
     this.authorRepository = authorRepository
-    this.authorRepository = authorRepository
+    this.authorMapper = authorMapper
   }
 
   async execute(input: Input): Promise<IAuthorDTO> {
@@ -25,6 +26,6 @@ export class RegisterAuthorUseCase implements IUseCase<Input, IAuthorDTO> {
 
     await this.authorRepository.add(author)
 
-    return new AuthorMapper().toDTO(author)
+    return await this.authorMapper.toDTO(author)
   }
 }

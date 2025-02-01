@@ -5,14 +5,16 @@ import { IUseCase } from './UseCase'
 
 export class ListBooksUseCase implements IUseCase<void, IBookDTO[]> {
   private readonly bookRepository: IBookRepository
+  private readonly bookMapper: BookMapper
 
-  constructor(bookRepository: IBookRepository) {
+  constructor(bookRepository: IBookRepository, bookMapper: BookMapper) {
     this.bookRepository = bookRepository
+    this.bookMapper = bookMapper
   }
 
   async execute(): Promise<IBookDTO[]> {
     const books = await this.bookRepository.getAll()
 
-    return new BookMapper().toDTOs(books)
+    return await this.bookMapper.toDTOs(books)
   }
 }
