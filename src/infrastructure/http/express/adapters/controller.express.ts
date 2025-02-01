@@ -5,7 +5,7 @@ import {
   IResponse,
 } from '../../../../interfaces/controllers/Controller'
 
-export function expressAdapter(controller: IController) {
+export function expressControllerAdapter(controller: IController) {
   return async (req: Request, res: Response) => {
     const applicationRequest: IRequest = {
       ...req.body,
