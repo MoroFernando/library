@@ -1,4 +1,4 @@
-import ExpressAPI from './infrastructure/api/express/api.express'
+import ExpressAPI from './infrastructure/api/express/express.api'
 
 const api = new ExpressAPI()
 

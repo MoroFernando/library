@@ -13,8 +13,6 @@ export function expressControllerAdapter(controller: IController) {
       ...req.query,
     }
 
-    // params: req.params,
-    // query: req.query as Record<string, string>,
     const httpRes: IResponse = await controller.handle(applicationRequest)
 
     res.status(httpRes.statusCode).json(httpRes.data)
