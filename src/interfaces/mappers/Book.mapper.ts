@@ -8,6 +8,7 @@ export class BookMapper extends Mapper<Book, IBookDTO> {
     return Book.with({
       id: dto.id,
       title: dto.title,
+      authorId: dto.authorId,
       category: dto.category
         ? Category.with({ name: dto.category })
         : undefined,
@@ -19,6 +20,7 @@ export class BookMapper extends Mapper<Book, IBookDTO> {
     return {
       id: domain.id,
       title: domain.title,
+      authorId: domain.authorId,
       category: domain.category?.name ?? null,
       pagesNumber: domain.pagesNumber ?? null,
     }

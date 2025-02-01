@@ -5,11 +5,23 @@ GET http://localhost:3000/
 GET http://localhost:3000/books
 
 ###
-POST http://localhost:3000/books
+POST http://localhost:3000/book
 Content-Type: application/json
 
 {
   "title": "A incendiária",
+  "authorId": "579668e7-fb47-4521-a9ef-3f3945f52ecf",
   "category": "Terror",
   "pagesNumber": 422
+}
+
+###
+GET http://localhost:3000/authors
+
+###
+POST http://localhost:3000/author
+Content-Type: application/json
+
+{
+  "name": "Stephen King"
 }

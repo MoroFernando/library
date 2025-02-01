@@ -27,6 +27,10 @@ export class Author {
     }
   }
 
+  get id() {
+    return this.props.id
+  }
+
   get name() {
     return this.props.name
   }

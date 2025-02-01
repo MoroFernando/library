@@ -11,10 +11,11 @@ export class RegisterBookController implements IController {
 
   async handle(request: IRequest): Promise<IResponse> {
     try {
-      const { title, category, pagesNumber } = request
+      const { title, category, authorId, pagesNumber } = request
 
       const output = await this.registerBookUseCase.execute({
         title: title,
+        authorId: authorId,
         category: category,
         pagesNumber: pagesNumber,
       })

@@ -1,3 +1,4 @@
+import { BookAuthorIdRequiredError } from '../../errors/BookAuthorIdRequired.error'
 import { BookPagesNumberInvalid } from '../../errors/BookPagesNumberInvalid.error'
 import { BookTitleInvalidError } from '../../errors/BookTitleInvalid.error'
 import { BookTitleRequiredError } from '../../errors/BookTitleRequired.error'
@@ -6,6 +7,7 @@ import { Category } from '../value-objects/Category.vo'
 type BookProps = {
   id: string
   title: string
+  authorId: string
   category?: Category
   pagesNumber?: number
 }
@@ -19,6 +21,7 @@ export class Book {
     return new Book({
       id: crypto.randomUUID().toString(),
       title: props.title,
+      authorId: props.authorId,
       category: props.category,
       pagesNumber: props.pagesNumber,
     })
@@ -37,6 +40,10 @@ export class Book {
       throw new BookTitleInvalidError()
     }
 
+    if (!this.props.authorId) {
+      throw new BookAuthorIdRequiredError()
+    }
+
     if (this.props.pagesNumber && this.props.pagesNumber < 0) {
       throw new BookPagesNumberInvalid()
     }
@@ -48,6 +55,10 @@ export class Book {
 
   get title() {
     return this.props.title
+  }
+
+  get authorId() {
+    return this.props.authorId
   }
 
   get category() {

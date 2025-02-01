@@ -18,6 +18,15 @@ model Book {
   title       String
   category    String?
   pagesNumber Int?
-
+  authorId    String
+  author      Author  @relation(fields: [authorId], references: [id])
   @@map("books")
+}
+
+model Author {
+  id   String @id @default(uuid())
+  name String
+  Book Book[]
+
+  @@map("authors")
 }
