@@ -10,7 +10,7 @@ export class ListBooksController implements IController {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  async handle(request: IRequest): Promise<IResponse> {
+  async handle(request?: IRequest): Promise<IResponse> {
     try {
       const output = await this.listBookuseCase.execute()
 
