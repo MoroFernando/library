@@ -3,7 +3,9 @@ import { Book } from '../../../domain/entities/Book.entity'
 import { prisma } from '../../database/prisma/client'
 import { IBookRepository } from '../../../domain/repositories/Book.repository'
 import { Category } from '../../../domain/value-objects/Category.vo'
+import { injectable } from 'tsyringe'
 
+@injectable()
 export class BookPrismaRepository implements IBookRepository {
   private readonly prisma = prisma
 

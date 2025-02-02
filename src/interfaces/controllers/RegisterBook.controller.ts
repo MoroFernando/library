@@ -1,19 +1,16 @@
 import { RegisterBookUseCase } from '../../application/use-cases/RegisterBook.usecase'
 import { IController, IResponse, IRequest } from './Controller'
 import { handleError } from '../../errors/ErrorHandler'
+import { container, injectable } from 'tsyringe'
 
+@injectable()
 export class RegisterBookController implements IController {
-  private readonly registerBookUseCase: RegisterBookUseCase
-
-  constructor(registerBookUseCase: RegisterBookUseCase) {
-    this.registerBookUseCase = registerBookUseCase
-  }
-
   async handle(request: IRequest): Promise<IResponse> {
     try {
       const { title, category, authorId, pagesNumber } = request
 
-      const output = await this.registerBookUseCase.execute({
+      const registerBookUseCase = container.resolve(RegisterBookUseCase)
+      const output = await registerBookUseCase.execute({
         title: title,
         authorId: authorId,
         category: category,

@@ -1,6 +1,8 @@
+import { injectable } from 'tsyringe'
 import { Author } from '../../../domain/entities/Author.entity'
 import { IAuthorRepository } from '../../../domain/repositories/Author.repository'
 
+@injectable()
 export class AuthorInMemomryRepository implements IAuthorRepository {
   private readonly authors: Author[] = []
 

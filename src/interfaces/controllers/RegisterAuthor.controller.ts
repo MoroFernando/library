@@ -1,19 +1,16 @@
 import { RegisterAuthorUseCase } from '../../application/use-cases/RegisterAuthor.usecase'
 import { IController, IResponse, IRequest } from './Controller'
 import { handleError } from '../../errors/ErrorHandler'
+import { container, injectable } from 'tsyringe'
 
+@injectable()
 export class RegisterAuthorController implements IController {
-  private readonly registerAuthorUseCase: RegisterAuthorUseCase
-
-  constructor(registerAuthorUseCase: RegisterAuthorUseCase) {
-    this.registerAuthorUseCase = registerAuthorUseCase
-  }
-
   async handle(request: IRequest): Promise<IResponse> {
     try {
       const { name } = request
 
-      const output = await this.registerAuthorUseCase.execute({
+      const registerAuthorUseCase = container.resolve(RegisterAuthorUseCase)
+      const output = await registerAuthorUseCase.execute({
         name,
       })
 

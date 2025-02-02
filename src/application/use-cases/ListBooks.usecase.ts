@@ -1,16 +1,15 @@
+import { inject, injectable } from 'tsyringe'
 import { IBookRepository } from '../../domain/repositories/Book.repository'
 import { BookMapper } from '../../interfaces/mappers/Book.mapper'
 import { IBookDTO } from '../dtos/Book.dto'
 import { IUseCase } from './UseCase'
 
+@injectable()
 export class ListBooksUseCase implements IUseCase<void, IBookDTO[]> {
-  private readonly bookRepository: IBookRepository
-  private readonly bookMapper: BookMapper
-
-  constructor(bookRepository: IBookRepository, bookMapper: BookMapper) {
-    this.bookRepository = bookRepository
-    this.bookMapper = bookMapper
-  }
+  constructor(
+    @inject('BookMapper') private bookMapper: BookMapper,
+    @inject('BookRepository') private bookRepository: IBookRepository,
+  ) {}
 
   async execute(): Promise<IBookDTO[]> {
     const books = await this.bookRepository.getAll()

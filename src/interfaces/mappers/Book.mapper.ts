@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe'
 import { Mapper } from './Mapper'
 import { Book } from '../../domain/entities/Book.entity'
 import { IBookDTO } from '../../application/dtos/Book.dto'
@@ -6,14 +7,13 @@ import { IAuthorRepository } from '../../domain/repositories/Author.repository'
 import { AuthorNotFoundError } from '../../errors/AuthorNotFound.error'
 import { AuthorMapper } from './Author.mapper'
 
+@injectable()
 export class BookMapper extends Mapper<Book, IBookDTO> {
-  private readonly authorRepository: IAuthorRepository
-  private readonly authorMapper: AuthorMapper
-
-  constructor(authorRepository: IAuthorRepository, authorMapper: AuthorMapper) {
+  constructor(
+    @inject('AuthorRepository') private authorRepository: IAuthorRepository,
+    @inject('AuthorMapper') private authorMapper: AuthorMapper,
+  ) {
     super()
-    this.authorRepository = authorRepository
-    this.authorMapper = authorMapper
   }
 
   async toDomain(dto: IBookDTO): Promise<Book> {

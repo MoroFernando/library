@@ -1,8 +1,10 @@
+import { injectable } from 'tsyringe'
 import { Author as PrismaAuthor } from '@prisma/client'
 import { Author } from '../../../domain/entities/Author.entity'
 import { prisma } from '../../database/prisma/client'
 import { IAuthorRepository } from '../../../domain/repositories/Author.repository'
 
+@injectable()
 export class AuthorPrismaRepository implements IAuthorRepository {
   private readonly prisma = prisma
 

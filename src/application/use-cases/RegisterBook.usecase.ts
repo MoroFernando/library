@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe'
 import { Book } from '../../domain/entities/Book.entity'
 import { IAuthorRepository } from '../../domain/repositories/Author.repository'
 import { IBookRepository } from '../../domain/repositories/Book.repository'
@@ -14,20 +15,13 @@ type Input = {
   pagesNumber?: number
 }
 
+@injectable()
 export class RegisterBookUseCase implements IUseCase<Input, IBookDTO> {
-  private readonly bookRepository: IBookRepository
-  private readonly authorRepository: IAuthorRepository
-  private readonly bookMapper: BookMapper
-
   constructor(
-    bookRepository: IBookRepository,
-    authorRepository: IAuthorRepository,
-    bookMapper: BookMapper,
-  ) {
-    this.bookRepository = bookRepository
-    this.authorRepository = authorRepository
-    this.bookMapper = bookMapper
-  }
+    @inject('BookRepository') private bookRepository: IBookRepository,
+    @inject('AuthorRepository') private authorRepository: IAuthorRepository,
+    @inject('BookMapper') private bookMapper: BookMapper,
+  ) {}
 
   async execute(input: Input): Promise<IBookDTO> {
     const { title, category, pagesNumber, authorId } = input
