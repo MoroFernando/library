@@ -23,5 +23,5 @@ POST http://localhost:3000/author
 Content-Type: application/json
 
 {
-  "name": "Agatha Cristie"
+  "name": "Stephen King"
 }
