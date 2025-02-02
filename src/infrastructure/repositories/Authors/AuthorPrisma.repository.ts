@@ -46,4 +46,19 @@ export class AuthorPrismaRepository implements IAuthorRepository {
       name: prismaAuthor.name,
     })
   }
+
+  async findByName(name: string) {
+    const prismaAuthor = await this.prisma.author.findFirst({
+      where: {
+        name: name,
+      },
+    })
+
+    if (!prismaAuthor) return null
+
+    return Author.with({
+      id: prismaAuthor.id,
+      name: prismaAuthor.name,
+    })
+  }
 }

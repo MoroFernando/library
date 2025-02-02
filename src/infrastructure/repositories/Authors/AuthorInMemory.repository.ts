@@ -17,4 +17,8 @@ export class AuthorInMemomryRepository implements IAuthorRepository {
   async findById(id: string) {
     return this.authors.find((author) => author.id === id) || null
   }
+
+  async findByName(name: string): Promise<Author | null> {
+    return this.authors.find((author) => author.name === name) || null
+  }
 }
