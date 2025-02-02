@@ -16,12 +16,12 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/authors
+GET http://localhost:3000/author/Agatha Cristie
 
 ###
 POST http://localhost:3000/author
 Content-Type: application/json
 
 {
-  "name": "Stephen King"
+  "name": "Agatha Cristie"
 }
