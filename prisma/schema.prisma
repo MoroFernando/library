@@ -9,14 +9,24 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Book {
-  id          String @id @default(uuid())
+  id          String  @id @default(uuid())
   title       String
+  category    String?
   pagesNumber Int?
-
+  authorId    String
+  author      Author  @relation(fields: [authorId], references: [id])
   @@map("books")
+}
+
+model Author {
+  id   String @id @default(uuid())
+  name String
+  Book Book[]
+
+  @@map("authors")
 }

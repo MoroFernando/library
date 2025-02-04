@@ -2,9 +2,9 @@
   "name": "catalogo",
   "version": "1.0.0",
   "description": "",
-  "main": "src/app.ts",
+  "main": "src/main.ts",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts --transpile-only",
+    "dev": "ts-node-dev src/main.ts --transpile-only",
     "test": "jest"
   },
   "keywords": [],
@@ -13,7 +13,9 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "express": "^4.21.2",
-    "prisma": "^6.2.1"
+    "prisma": "^6.2.1",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
