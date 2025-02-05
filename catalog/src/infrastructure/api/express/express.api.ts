@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import IApi from '../Api'
 import express from 'express'
 import router from './routes/routes.express'
