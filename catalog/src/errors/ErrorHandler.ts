@@ -1,4 +1,4 @@
-import { ApplicationError } from '../errors/ApplicationError'
+import { ApplicationError } from './ApplicationError'
 import { IResponse } from '../interfaces/controllers/Controller'
 
 export function handleError(error: unknown): IResponse {
